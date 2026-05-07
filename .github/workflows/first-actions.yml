@@ -1,7 +1,7 @@
  name: My First GitHub Actions
-
-  on: [push]
-
+ 
+ on: [push]
+ 
   jobs:
     build:
       runs-on: self-hosted
@@ -12,7 +12,7 @@
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: [3.11]
 
       - name: Install dependencies
         run: |
