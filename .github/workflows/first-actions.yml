@@ -1,28 +1,25 @@
-name: My First GitHub Actions
+ name: My First GitHub Actions
 
-on: [push]
+  on: [push]
 
-jobs:
-  build:
-    runs-on: self-hosted
+  jobs:
+    build:
+      runs-on: self-hosted
 
-    strategy:
-      matrix:
-        python-version: '3.11'
+      steps:
+      - uses: actions/checkout@v3
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
 
-    - name: Run tests
-      run: |
-        cd src
-        python -m pytest addition.py
+      - name: Run tests
+        run: |
+          cd src
+          python -m pytest addition.py
